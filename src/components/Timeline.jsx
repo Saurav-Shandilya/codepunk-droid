@@ -1,84 +1,116 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
 import timelineSvg from "../assets/timeline.svg";
 
-// Updated Schedule Data
 const timelineData = [
   {
     id: 1,
-    date: "1 March - 20 March",
+    date: "2025-03-01",
+    displayDate: "1 March - 20 March",
     time: "All Day",
     title: "ONLINE REGISTRATION",
     description: "Secure your spot! Register online through our portal to confirm your participation in the hackathon.",
-    color: "#00F5D4" // Teal
+    color: "#00F5D4"
   },
   {
     id: 2,
-    date: "24 March",
-    time: "10:30 AM - 11:00 AM",
-    title: "REGISTRATION",
-    description: "On-site check-in. Verify your credentials, collect your swag bags, and get ready for the event.",
-    color: "#FF3366" // Pink
+    date: "2025-03-20",
+    displayDate: "20 March",
+    time: "All Day",
+    title: "SHORTLISTING",
+    description: "Teams will be shortlisted based on their profiles and project ideas. Selected participants will receive confirmation emails.",
+    color: "#FF6B00"
   },
   {
     id: 3,
-    date: "24 March",
-    time: "11:00 AM - 11:30 AM",
-    title: "INAUGURATION",
-    description: "Opening ceremony. Welcome address by dignitaries and introduction to the hackathon theme.",
-    color: "#FFE600" // Yellow
+    date: "2025-03-24T10:30:00",
+    displayDate: "24 March",
+    time: "10:30 AM - 11:00 AM",
+    title: "REGISTRATION",
+    description: "On-site check-in. Verify your credentials, collect your swag bags, and get ready for the event.",
+    color: "#FF3366"
   },
   {
     id: 4,
-    date: "24 March",
-    time: "11:30 AM - 12:00 PM",
-    title: "RULES & GUIDELINES",
-    description: "Detailed briefing on evaluation criteria, code of conduct, and resource allocation.",
-    color: "#9D4EDD" // Purple
+    date: "2025-03-24T11:00:00",
+    displayDate: "24 March",
+    time: "11:00 AM - 11:30 AM",
+    title: "INAUGURATION",
+    description: "Opening ceremony. Welcome address by dignitaries and introduction to the hackathon theme.",
+    color: "#FFE600"
   },
   {
     id: 5,
-    date: "24 March",
-    time: "12:00 NOON",
-    title: "EVENT START",
-    description: "Hackathon begins! The clock starts ticking. Start brainstorming and coding your solutions.",
-    color: "#00D9FF" // Cyan
+    date: "2025-03-24T11:30:00",
+    displayDate: "24 March",
+    time: "11:30 AM - 12:00 PM",
+    title: "RULES & GUIDELINES",
+    description: "Detailed briefing on evaluation criteria, code of conduct, and resource allocation.",
+    color: "#9D4EDD"
   },
   {
     id: 6,
-    date: "25 March",
-    time: "09:30 AM - 09:50 AM",
-    title: "JUDGING (ROUND 1)",
-    description: "Initial evaluation. Present your progress and basic prototype to the preliminary judges.",
-    color: "#FF6B00" // Orange
+    date: "2025-03-24T12:00:00",
+    displayDate: "24 March",
+    time: "12:00 NOON",
+    title: "EVENT START",
+    description: "Hackathon begins! The clock starts ticking. Start brainstorming and coding your solutions.",
+    color: "#00D9FF"
   },
   {
     id: 7,
-    date: "25 March",
-    time: "09:55 AM - 10:15 AM",
-    title: "BREAK & PREP",
-    description: "Short break and time for final PPT preparation for the finalists moving to the next round.",
-    color: "#ffffff" // White
+    date: "2025-03-25T09:30:00",
+    displayDate: "25 March",
+    time: "09:30 AM - 09:50 AM",
+    title: "JUDGING (ROUND 1)",
+    description: "Initial evaluation. Present your progress and basic prototype to the preliminary judges.",
+    color: "#FF6B00"
   },
   {
     id: 8,
-    date: "25 March",
-    time: "10:20 AM - 11:00 AM",
-    title: "FINAL JUDGING",
-    description: "Final presentations. Showcase your complete solution to the panel of expert judges.",
-    color: "#FF3366" // Pink
+    date: "2025-03-25T09:55:00",
+    displayDate: "25 March",
+    time: "09:55 AM - 10:15 AM",
+    title: "BREAK & PREP",
+    description: "Short break and time for final PPT preparation for the finalists moving to the next round.",
+    color: "#ffffff"
   },
   {
     id: 9,
-    date: "25 March",
+    date: "2025-03-25T10:20:00",
+    displayDate: "25 March",
+    time: "10:20 AM - 11:00 AM",
+    title: "FINAL JUDGING",
+    description: "Final presentations. Showcase your complete solution to the panel of expert judges.",
+    color: "#FF3366"
+  },
+  {
+    id: 10,
+    date: "2025-03-25T11:15:00",
+    displayDate: "25 March",
     time: "11:15 AM",
     title: "PRIZE DISTRIBUTION",
     description: "Winners announcement and prize distribution ceremony. Celebrate the victory!",
-    color: "#FFD700" // Gold
+    color: "#FFD700"
   }
 ];
 
-const TimelineItem = ({ item, isLeft, index }) => {
+// Live Badge - Top Left Corner with blinking red dot
+const LiveBadge = () => (
+  <div className="absolute top-3 left-3 z-20 flex items-center gap-1.5">
+    {/* Blinking Red Dot */}
+    <span className="relative flex h-2.5 w-2.5">
+      <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+      <span className="relative inline-flex rounded-full h-2.5 w-2.5 bg-red-600 border border-white"></span>
+    </span>
+    {/* LIVE Text */}
+    <span className="text-[10px] font-black text-red-500 uppercase tracking-wider">
+      LIVE
+    </span>
+  </div>
+);
+
+const TimelineItem = ({ item, isLeft, index, isLive }) => {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: false, margin: "-100px" });
   
@@ -96,16 +128,19 @@ const TimelineItem = ({ item, isLeft, index }) => {
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="bg-black/30 backdrop-blur-sm p-6 rounded-xl border-2 border-white/10 hover:border-white/30 transition-colors"
+          className={`relative bg-black/40 backdrop-blur-sm p-6 rounded-xl border-2 transition-all duration-300 ${isLive ? 'border-red-500/50 shadow-[0_0_30px_rgba(239,68,68,0.3)]' : 'border-white/10 hover:border-white/30'}`}
         >
-          {/* Date Badge */}
-          <div className={`inline-block px-3 py-1 mb-2 text-xs font-bold text-black rounded-sm ${isLeft ? 'md:ml-auto' : ''}`}
-               style={{ backgroundColor: item.color }}>
-            {item.date} • {item.time}
+          {/* LIVE Badge - Top Left Corner */}
+          {isLive && <LiveBadge />}
+          
+          {/* Date Badge - Top Right when live, normal when not */}
+          <div className={`inline-block px-3 py-1 mb-3 text-xs font-bold text-black rounded-sm ${isLeft ? 'md:ml-auto' : ''} ${isLive ? 'bg-white/90' : ''}`}
+               style={{ backgroundColor: isLive ? undefined : item.color }}>
+            {item.displayDate} • {item.time}
           </div>
           
-          <h2 className="text-2xl md:text-3xl font-black text-white mb-2 tracking-wide uppercase" 
-              style={{ textShadow: `2px 2px 0px ${item.color}` }}>
+          <h2 className={`text-2xl md:text-3xl font-black mb-2 tracking-wide uppercase ${isLive ? 'text-white' : 'text-white'}`} 
+              style={{ textShadow: `2px 2px 0px ${isLive ? '#ef4444' : item.color}` }}>
             {item.title}
           </h2>
           <p className="text-gray-300 text-sm md:text-base leading-relaxed">
@@ -123,29 +158,38 @@ const TimelineItem = ({ item, isLeft, index }) => {
           className="relative z-10"
         >
           <div 
-            className="w-8 h-8 rounded-full border-4 border-black flex items-center justify-center shadow-lg"
-            style={{ backgroundColor: item.color }}
+            className={`w-8 h-8 rounded-full border-4 border-black flex items-center justify-center shadow-lg transition-all duration-300 ${isLive ? 'scale-125 shadow-[0_0_20px_rgba(239,68,68,0.6)]' : ''}`}
+            style={{ backgroundColor: isLive ? '#ef4444' : item.color }}
           >
-            <motion.div
-              initial={{ scale: 0 }}
-              animate={isInView ? { scale: 1 } : { scale: 0 }}
-              transition={{ duration: 0.3, delay: 0.5 }}
-              className="w-2 h-2 bg-black rounded-full"
-            />
+            {isLive ? (
+              <motion.div
+                animate={{ scale: [1, 1.2, 1] }}
+                transition={{ repeat: Infinity, duration: 1 }}
+                className="w-3 h-3 bg-white rounded-full"
+              />
+            ) : (
+              <motion.div
+                initial={{ scale: 0 }}
+                animate={isInView ? { scale: 1 } : { scale: 0 }}
+                transition={{ duration: 0.3, delay: 0.5 }}
+                className="w-2 h-2 bg-black rounded-full"
+              />
+            )}
           </div>
-          {/* Connector Line Animation */}
-          <motion.div 
-            initial={{ height: 0 }}
-            animate={isInView ? { height: 100 } : { height: 0 }}
-            className="absolute top-8 left-1/2 w-0.5 bg-white/20 -translate-x-1/2 hidden md:block"
-            style={{ height: '6rem' }}
-          />
+          
+          {/* Pulse ring for live */}
+          {isLive && (
+            <motion.div
+              animate={{ scale: [1, 1.6, 1], opacity: [0.5, 0, 0.5] }}
+              transition={{ repeat: Infinity, duration: 2 }}
+              className="absolute inset-0 rounded-full border-2 border-red-500"
+            />
+          )}
         </motion.div>
       </div>
 
-      {/* Empty Side for Desktop / Image for Mobile */}
+      {/* Empty Side */}
       <div className={`w-5/12 ${isLeft ? 'pl-6 md:pl-12' : 'pr-6 md:pr-12'}`}>
-         {/* Decorative element or empty */}
          <div className={`hidden md:block h-32 ${isLeft ? 'bg-gradient-to-l' : 'bg-gradient-to-r'} from-white/5 to-transparent rounded-xl`} />
       </div>
     </motion.div>
@@ -156,6 +200,7 @@ const Timeline = () => {
   const containerRef = useRef(null);
   const headerRef = useRef(null);
   const isHeaderInView = useInView(headerRef, { once: false });
+  const [currentTime, setCurrentTime] = useState(new Date());
   
   const { scrollYProgress } = useScroll({
     target: containerRef,
@@ -164,15 +209,42 @@ const Timeline = () => {
   
   const lineHeight = useTransform(scrollYProgress, [0, 1], ["0%", "100%"]);
 
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 60000);
+    
+    return () => clearInterval(interval);
+  }, []);
+
+  // For testing: manually set which event is live (0-9), or -1 for none
+  const getLiveEventIndex = () => {
+    const now = currentTime;
+    
+    for (let i = 0; i < timelineData.length; i++) {
+      const event = timelineData[i];
+      const eventDate = new Date(event.date);
+      const nextEvent = timelineData[i + 1] ? new Date(timelineData[i + 1].date) : new Date(eventDate.getTime() + 24 * 60 * 60 * 1000);
+      
+      if (now >= eventDate && now < nextEvent) {
+        return i;
+      }
+    }
+    
+    // Manual test: return 0; // Shows first event as live
+    return -1;
+  };
+
+  const liveIndex = getLiveEventIndex();
+
   return (
     <div className="min-h-screen relative overflow-hidden bg-[#0a0a0a]" id='roadmap'>
       
-      {/* Top Divider */}
       <div className="w-full h-2 bg-gradient-to-r from-red-600 via-purple-500 to-cyan-500" />
 
       <div className="relative max-w-7xl mx-auto px-4 pt-20 pb-32">
         
-        {/* Header Section - Styled like Tracks */}
+        {/* Header */}
         <div ref={headerRef} className="text-center mb-20">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -199,11 +271,23 @@ const Timeline = () => {
           >
             Mark your calendars. The journey from registration to victory.
           </motion.p>
+          
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={isHeaderInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ delay: 0.3 }}
+            className="mt-4 inline-flex items-center gap-2 px-4 py-2 bg-black/50 rounded-full border border-white/10"
+          >
+            <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
+            <span className="text-sm text-gray-400 font-mono">
+              {currentTime.toLocaleDateString('en-GB', { day: 'numeric', month: 'short' })} {currentTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit' })}
+            </span>
+          </motion.div>
         </div>
 
         <div ref={containerRef} className="relative">
           
-          {/* Progress Line - Desktop */}
+          {/* Progress Line */}
           <div className="hidden md:block absolute left-1/2 transform -translate-x-1/2 top-0 bottom-0 w-1 h-full">
             <div className="absolute inset-0 bg-white/10 rounded-full" />
             <motion.div 
@@ -212,7 +296,6 @@ const Timeline = () => {
             />
           </div>
 
-          {/* Progress Line - Mobile */}
           <div className="md:hidden absolute left-8 top-0 bottom-0 w-1 bg-white/10">
             <motion.div 
               className="absolute top-0 left-0 w-full bg-red-600 origin-top"
@@ -224,16 +307,17 @@ const Timeline = () => {
           <div className="relative">
             {timelineData.map((item, index) => (
               <div key={item.id}>
-                {/* Desktop Layout */}
+                {/* Desktop */}
                 <div className="hidden md:block">
                   <TimelineItem 
                     item={item} 
                     isLeft={index % 2 === 0} 
                     index={index}
+                    isLive={index === liveIndex}
                   />
                 </div>
                 
-                {/* Mobile Layout */}
+                {/* Mobile */}
                 <motion.div 
                   className="md:hidden flex items-start mb-12 pl-16 relative"
                   initial={{ opacity: 0, x: -30 }}
@@ -241,16 +325,47 @@ const Timeline = () => {
                   viewport={{ once: false, margin: "-50px" }}
                   transition={{ duration: 0.5 }}
                 >
-                  <div 
-                    className="absolute left-8 top-1 w-4 h-4 rounded-full border-2 border-black transform -translate-x-1.5"
-                    style={{ backgroundColor: item.color }}
-                  />
-                  
-                  <div className="bg-black/40 p-4 rounded-lg border border-white/10 w-full">
-                    <div className="text-xs font-bold mb-1 opacity-80" style={{ color: item.color }}>
-                      {item.date} • {item.time}
+                  <div className="absolute left-8 top-1 flex items-center justify-center">
+                    <div 
+                      className={`w-4 h-4 rounded-full border-2 border-black transform -translate-x-1.5 ${index === liveIndex ? 'scale-125' : ''}`}
+                      style={{ backgroundColor: index === liveIndex ? '#ef4444' : item.color }}
+                    >
+                      {index === liveIndex && (
+                        <motion.div
+                          animate={{ scale: [1, 1.3, 1] }}
+                          transition={{ repeat: Infinity, duration: 1 }}
+                          className="w-full h-full bg-white rounded-full"
+                        />
+                      )}
                     </div>
-                    <h3 className="text-lg font-black text-white mb-1 uppercase">{item.title}</h3>
+                    {index === liveIndex && (
+                      <motion.div
+                        animate={{ scale: [1, 1.8, 1], opacity: [0.6, 0, 0.6] }}
+                        transition={{ repeat: Infinity, duration: 2 }}
+                        className="absolute w-6 h-6 rounded-full border-2 border-red-500 -translate-x-1.5"
+                      />
+                    )}
+                  </div>
+                  
+                  <div className={`relative bg-black/40 p-4 rounded-lg border w-full ${index === liveIndex ? 'border-red-500/50 shadow-[0_0_20px_rgba(239,68,68,0.3)]' : 'border-white/10'}`}>
+                    {/* Mobile Live Badge - Top Left */}
+                    {index === liveIndex && (
+                      <div className="absolute top-2 left-2 z-20 flex items-center gap-1">
+                        <span className="relative flex h-2 w-2">
+                          <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-red-500 opacity-75"></span>
+                          <span className="relative inline-flex rounded-full h-2 w-2 bg-red-600 border border-white"></span>
+                        </span>
+                        <span className="text-[9px] font-black text-red-500 uppercase">LIVE</span>
+                      </div>
+                    )}
+                    
+                    <div className={`text-xs font-bold mb-1 ${index === liveIndex ? 'mt-4' : ''}`} style={{ color: index === liveIndex ? '#ef4444' : item.color }}>
+                      {item.displayDate} • {item.time}
+                    </div>
+                    
+                    <h3 className={`text-lg font-black mb-1 uppercase ${index === liveIndex ? 'text-white' : 'text-white'}`} style={{ textShadow: index === liveIndex ? '1px 1px 0px #ef4444' : 'none' }}>
+                      {item.title}
+                    </h3>
                     <p className="text-sm text-gray-400">{item.description}</p>
                   </div>
                 </motion.div>
@@ -260,7 +375,6 @@ const Timeline = () => {
         </div>
       </div>
 
-      {/* Bottom SVG Decoration */}
       <div className="relative w-full mt-10">
         <img
           src={timelineSvg}
@@ -269,7 +383,6 @@ const Timeline = () => {
         />
       </div>
       
-      {/* Bottom Divider */}
       <div className="w-full h-2 bg-gradient-to-r from-cyan-500 via-purple-500 to-red-600" />
 
     </div>

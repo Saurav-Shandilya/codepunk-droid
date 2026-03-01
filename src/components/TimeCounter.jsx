@@ -17,13 +17,33 @@ const TimeCounter = () => {
     }))
   , []);
 
+  /* ✅ UPDATED COUNTDOWN LOGIC */
   const calculateTimeLeft = () => {
-    // Updated to 2025 as per your timeline data
-    const targetDate = new Date("2025-03-24T10:30:00");
     const now = new Date();
-    const diff = targetDate - now;
 
-    if (diff <= 0) return null;
+    // March = month index 2 (0-based index)
+    let targetDate = new Date(
+      now.getFullYear(),
+      2,
+      24,
+      10,
+      30,
+      0
+    );
+
+    // If this year's March 24 has already passed, use next year
+    if (now > targetDate) {
+      targetDate = new Date(
+        now.getFullYear() + 1,
+        2,
+        24,
+        10,
+        30,
+        0
+      );
+    }
+
+    const diff = targetDate - now;
 
     return {
       days: Math.floor(diff / (1000 * 60 * 60 * 24)),
@@ -55,10 +75,8 @@ const TimeCounter = () => {
       ref={sectionRef} 
       className="relative w-full bg-black text-white overflow-hidden z-10"
     >
-      {/* Top Divider */}
       <div className="w-full h-1 bg-gradient-to-r from-red-600 via-purple-500 to-cyan-500" />
 
-      {/* Minimal particles */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none z-0">
         {particles.map((p, i) => (
           <span
@@ -76,7 +94,6 @@ const TimeCounter = () => {
         ))}
       </div>
 
-      {/* FULL WIDTH IMAGE - Responsive Fix */}
       <motion.div 
         className="relative w-full overflow-hidden"
         initial={{ opacity: 0 }}
@@ -95,10 +112,8 @@ const TimeCounter = () => {
         />
       </motion.div>
 
-      {/* CONTENT SECTION */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 py-12 sm:py-16 md:py-20">
         
-        {/* HEADING */}
         <motion.div
           className="text-center mb-8 sm:mb-10"
           initial={{ opacity: 0, y: 20 }}
@@ -119,14 +134,12 @@ const TimeCounter = () => {
           </h2>
         </motion.div>
 
-        {/* TIMER - Red Dotted Background */}
         <motion.div
           className="relative w-full max-w-3xl mx-auto"
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.5, delay: 0.3 }}
         >
-          {/* Timer Box with Red Dotted Background */}
           <div
             className="py-6 sm:py-8 md:py-10 px-4 rounded-xl border-4 border-black"
             style={{
@@ -136,7 +149,6 @@ const TimeCounter = () => {
               boxShadow: "6px 6px 0px #000",
             }}
           >
-            {/* Timer Content */}
             <div className="flex justify-center items-center gap-2 sm:gap-4 md:gap-6">
               {timeUnits.map((unit, index) => (
                 <React.Fragment key={unit.label}>
@@ -170,7 +182,6 @@ const TimeCounter = () => {
         </motion.div>
       </div>
 
-      {/* CSS for minimal particles */}
       <style>{`
         @keyframes float {
           0%, 100% { 

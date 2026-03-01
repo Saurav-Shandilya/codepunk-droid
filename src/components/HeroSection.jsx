@@ -48,44 +48,42 @@ const HeroSection = ({ onNav }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen bg-black overflow-hidden text-white flex items-center justify-center"
+      className="relative min-h-screen bg-black overflow-hidden text-white flex items-center justify-center py-20 lg:py-0"
     >
-
       {/* Background Glow */}
       <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 1.2 }}
-        className="absolute inset-0"
+        className="absolute inset-0 pointer-events-none"
         style={{
           background:
             "radial-gradient(circle at center, rgba(255,0,0,0.25), transparent 40%)",
         }}
       />
 
-      {/* MAIN GRID */}
+      {/* MAIN GRID - Responsive: Stack on mobile, 3-col on desktop */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
-        className="relative w-full max-w-7xl mx-auto px-8 grid lg:grid-cols-3 items-center"
+        className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 items-center"
       >
-
-        {/* LEFT CONTENT */}
+        {/* LEFT CONTENT - Order 2 on mobile, Order 1 on desktop */}
         <motion.div
           variants={fadeRight}
-          className="z-20 space-y-6"
+          className="z-20 space-y-4 sm:space-y-6 order-2 lg:order-1 text-center lg:text-left"
         >
           <motion.h3
             variants={fadeUp}
-            className="text-red-500 tracking-[0.3em] uppercase text-sm"
+            className="text-red-500 tracking-[0.3em] uppercase text-xs sm:text-sm"
           >
             Ultimate Experience
           </motion.h3>
 
           <motion.h1
             variants={fadeUp}
-            className="text-5xl font-black uppercase leading-[0.9]"
+            className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-[0.9]"
           >
             CodePunk
             <span className="block text-red-600">2.0</span>
@@ -93,7 +91,7 @@ const HeroSection = ({ onNav }) => {
 
           <motion.p
             variants={fadeUp}
-            className="text-gray-300 max-w-sm"
+            className="text-gray-300 max-w-sm mx-auto lg:mx-0 text-sm sm:text-base px-4 lg:px-0"
           >
             Where deep thinking meets bold innovation.
             Break the algorithm. Bend reality.
@@ -101,7 +99,7 @@ const HeroSection = ({ onNav }) => {
 
           <motion.div
             variants={fadeUp}
-            className="flex gap-4"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
           >
             <motion.a
               whileHover={{ scale: 1.05 }}
@@ -109,7 +107,7 @@ const HeroSection = ({ onNav }) => {
               href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-full flex items-center gap-2 shadow-lg shadow-red-600/40"
+              className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-full flex items-center justify-center gap-2 shadow-lg shadow-red-600/40 text-sm sm:text-base"
             >
               <Sparkles size={18} />
               Register
@@ -120,7 +118,7 @@ const HeroSection = ({ onNav }) => {
               whileTap={{ scale: 0.95 }}
               type="button"
               onClick={() => onNav && onNav("#roadmap")}
-              className="border border-red-500 px-6 py-3 rounded-full hover:bg-red-600/20 transition flex items-center gap-2"
+              className="border border-red-500 px-6 py-3 rounded-full hover:bg-red-600/20 transition flex items-center justify-center gap-2 text-sm sm:text-base"
             >
               <Rocket size={18} />
               Timeline
@@ -128,57 +126,76 @@ const HeroSection = ({ onNav }) => {
           </motion.div>
         </motion.div>
 
-        {/* CENTER LOGO + SPIDER STACK */}
+        {/* CENTER LOGO + SPIDER STACK - Order 1 on mobile, Order 2 on desktop */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
-          className="relative flex items-center justify-center z-10 md:z-20"
+          className="relative flex items-center justify-center z-10 order-1 lg:order-2 py-8 lg:py-0"
         >
-          <div className="relative flex items-center justify-center ">
+          <div className="relative flex items-center justify-center">
+            {/* Logo - Responsive sizing */}
             <img
               src={codepunkLogo}
               alt="CodePunk 2.0"
-              className="absolute -top-5 sm:-top-14 md:-top-[136px] w-[320px] sm:w-[420px] md:w-[560px] lg:w-[720px] max-w-[88vw] drop-shadow-[0_12px_35px_rgba(255,0,0,0.35)] pointer-events-none select-none z-0"
+              className="absolute -top-8 sm:-top-12 md:-top-16 lg:-top-20 w-[280px] sm:w-[380px] md:w-[450px] lg:w-[520px] xl:w-[600px] max-w-[85vw] drop-shadow-[0_12px_35px_rgba(255,0,0,0.35)] pointer-events-none select-none z-0"
             />
 
+            {/* Spider-Man - Responsive sizing */}
             <img
               ref={spiderRef}
               src={spiderman}
               alt="Spider-Man"
-              className="relative h-[380px] w-[270px] sm:h-[470px] sm:w-[350px] md:h-[560px] md:w-[400px] max-w-full pointer-events-none select-none z-10"
+              className="relative h-[300px] w-[220px] sm:h-[380px] sm:w-[280px] md:h-[450px] md:w-[320px] lg:h-[500px] lg:w-[360px] xl:h-[560px] xl:w-[400px] max-w-full pointer-events-none select-none z-10"
             />
           </div>
         </motion.div>
 
-        {/* RIGHT CONTENT */}
+        {/* RIGHT CONTENT - Order 3 on all devices */}
         <motion.div
           variants={fadeLeft}
-          className="z-20 text-right space-y-6"
+          className="z-20 space-y-4 sm:space-y-6 order-3 text-center lg:text-right"
         >
           <motion.p
             variants={fadeUp}
-            className="text-gray-400 uppercase tracking-widest text-sm"
+            className="text-gray-400 uppercase tracking-widest text-xs sm:text-sm"
           >
             Protocol: CodePunk_2.0
           </motion.p>
 
           <motion.p
             variants={fadeUp}
-            className="text-gray-300 max-w-sm ml-auto"
+            className="text-gray-300 max-w-sm mx-auto lg:ml-auto lg:mr-0 text-sm sm:text-base px-4 lg:px-0"
           >
             Enter the Spider-Tech era.
             A cinematic hackathon experience powered by bold ideas.
           </motion.p>
 
-          <motion.p
+          <motion.div
             variants={fadeUp}
-            className="text-red-500 font-semibold"
+            className="inline-block bg-red-600/20 border border-red-500/50 px-4 py-2 rounded-lg"
           >
-            24H • On-Campus + Hybrid
-          </motion.p>
+            <p className="text-red-500 font-bold text-sm sm:text-base">
+              24H • On-Campus + Hybrid
+            </p>
+          </motion.div>
         </motion.div>
+      </motion.div>
 
+      {/* Mobile Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1.5, duration: 0.8 }}
+        className="absolute bottom-8 left-1/2 transform -translate-x-1/2 lg:hidden"
+      >
+        <div className="w-6 h-10 border-2 border-red-500 rounded-full flex justify-center p-2">
+          <motion.div
+            animate={{ y: [0, 12, 0] }}
+            transition={{ repeat: Infinity, duration: 1.5 }}
+            className="w-1.5 h-1.5 bg-red-500 rounded-full"
+          />
+        </div>
       </motion.div>
     </section>
   )
