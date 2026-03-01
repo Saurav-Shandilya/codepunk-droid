@@ -3,7 +3,7 @@ import { Github, Instagram, Linkedin, Globe } from "lucide-react"
 const socials = [
   { icon: Linkedin, label: "LinkedIn", href: "https://www.linkedin.com/company/droid-glau/" },
   { icon: Instagram, label: "Instagram", href: "https://www.instagram.com/droid_glau/" },
-  { icon: Globe, label: "Website", href: "https://example.com" },
+  { icon: Globe, label: "Website", href: "https://droidclub.in" },
 ]
 
 const Footer = () => {
