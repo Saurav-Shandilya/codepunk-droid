@@ -44,7 +44,7 @@ const timelineData = [
     date: "2025-03-24T11:30:00",
     displayDate: "24 March",
     time: "11:30 AM - 12:00 PM",
-    title: "RULES & GUIDELINES",
+    title: "INTRODUCTION AND RULES DESCRIPTION",
     description: "Detailed briefing on evaluation criteria, code of conduct, and resource allocation.",
     color: "#9D4EDD"
   },
@@ -59,36 +59,72 @@ const timelineData = [
   },
   {
     id: 7,
-    date: "2025-03-25T09:30:00",
-    displayDate: "25 March",
-    time: "09:30 AM - 09:50 AM",
-    title: "JUDGING (ROUND 1)",
-    description: "Initial evaluation. Present your progress and basic prototype to the preliminary judges.",
+    date: "2025-03-24T16:00:00",
+    displayDate: "24 March",
+    time: "4:00 PM - 5:00 PM",
+    title: "JUDGING 1 (MENTORING ROUND)",
+    description: "First round of evaluation with mentoring feedback. Get guidance from industry experts.",
     color: "#FF6B00"
   },
   {
     id: 8,
-    date: "2025-03-25T09:55:00",
-    displayDate: "25 March",
-    time: "09:55 AM - 10:15 AM",
-    title: "BREAK & PREP",
-    description: "Short break and time for final PPT preparation for the finalists moving to the next round.",
+    date: "2025-03-24T20:00:00",
+    displayDate: "24 March",
+    time: "8:00 PM - 9:00 PM",
+    title: "DINNER BREAK",
+    description: "Take a break, recharge with dinner, and network with fellow participants.",
     color: "#ffffff"
   },
   {
     id: 9,
-    date: "2025-03-25T10:20:00",
+    date: "2025-03-24T21:30:00",
+    displayDate: "24 March",
+    time: "9:30 PM - 10:00 PM",
+    title: "HACK CONTINUES",
+    description: "Back to hacking! Continue building your project with renewed energy.",
+    color: "#00F5D4"
+  },
+  {
+    id: 10,
+    date: "2025-03-25T00:00:00",
     displayDate: "25 March",
-    time: "10:20 AM - 11:00 AM",
+    time: "12:00 AM - 5:00 AM",
+    title: "NO SLEEP CHALLENGE",
+    description: "The ultimate test of endurance. Keep hacking through the night!",
+    color: "#FF3366"
+  },
+  {
+    id: 11,
+    date: "2025-03-25T09:30:00",
+    displayDate: "25 March",
+    time: "9:30 AM - 10:30 AM",
+    title: "JUDGING (ROUND 2)",
+    description: "Second round of evaluation. Present your progress to the judges.",
+    color: "#9D4EDD"
+  },
+  {
+    id: 12,
+    date: "2025-03-25T10:30:00",
+    displayDate: "25 March",
+    time: "10:30 AM - 11:00 AM",
+    title: "BREAK AND PPT PREPARATION",
+    description: "Short break and time for final PPT preparation for the finalists.",
+    color: "#FFE600"
+  },
+  {
+    id: 13,
+    date: "2025-03-25T11:00:00",
+    displayDate: "25 March",
+    time: "11:00 AM - 12:00 PM",
     title: "FINAL JUDGING",
     description: "Final presentations. Showcase your complete solution to the panel of expert judges.",
     color: "#FF3366"
   },
   {
-    id: 10,
-    date: "2025-03-25T11:15:00",
+    id: 14,
+    date: "2025-03-25T13:00:00",
     displayDate: "25 March",
-    time: "11:15 AM",
+    time: "1:00 PM",
     title: "PRIZE DISTRIBUTION",
     description: "Winners announcement and prize distribution ceremony. Celebrate the victory!",
     color: "#FFD700"
@@ -217,7 +253,7 @@ const Timeline = () => {
     return () => clearInterval(interval);
   }, []);
 
-  // For testing: manually set which event is live (0-9), or -1 for none
+  // For testing: manually set which event is live (0-13), or -1 for none
   const getLiveEventIndex = () => {
     const now = currentTime;
     
@@ -231,7 +267,7 @@ const Timeline = () => {
       }
     }
     
-    // Manual test: return 0; // Shows first event as live
+    // Manual test: return 5; // Shows Event Start as live
     return -1;
   };
 
