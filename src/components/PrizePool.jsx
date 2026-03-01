@@ -18,26 +18,28 @@ const PrizePool = () => {
     }))
   , []);
 
+  const unifiedDesc = "Breakdown reveals on event day. Prizes align with the $21,000 pool.";
+
   const prizes = [
     {
       id: 1,
       label: "1st Prize",
       amount: "TBA",
-      desc: "Grand champion award with premium goodies, cash prize and internship opportunities.",
+      desc: unifiedDesc,
       color: "#FFD700",
     },
     {
       id: 2,
       label: "2nd Prize",
       amount: "TBA",
-      desc: "Outstanding innovation award with sponsor rewards and industry mentorship.",
+      desc: unifiedDesc,
       color: "#C0C0C0",
     },
     {
       id: 3,
       label: "3rd Prize",
       amount: "TBA",
-      desc: "Creative excellence prize with project funding and exclusive merchandise.",
+      desc: unifiedDesc,
       color: "#CD7F32",
     }
   ];
@@ -82,15 +84,20 @@ const PrizePool = () => {
           >
             PRIZE POOL
           </h2>
-          <p 
-            className="text-xl sm:text-2xl md:text-3xl font-bold text-white mt-4"
-            style={{
-              textShadow: '3px 3px 0px #000',
-              WebkitTextStroke: '1px #000'
-            }}
-          >
-            TO BE ANNOUNCED
-          </p>
+          <div className="space-y-2 mt-4">
+            <p 
+              className="text-xl sm:text-2xl md:text-3xl font-bold text-white"
+              style={{
+                textShadow: '3px 3px 0px #000',
+                WebkitTextStroke: '1px #000'
+              }}
+            >
+              Total Prize Pool: $21,000
+            </p>
+            <p className="text-base sm:text-lg text-white/80 font-semibold">
+              Individual prizes TBA — final breakdown unveiled at the event.
+            </p>
+          </div>
         </motion.div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-8 ">
