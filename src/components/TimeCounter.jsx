@@ -18,7 +18,8 @@ const TimeCounter = () => {
   , []);
 
   const calculateTimeLeft = () => {
-    const targetDate = new Date("2026-03-24T00:00:00");
+    // Updated to 2025 as per your timeline data
+    const targetDate = new Date("2025-03-24T10:30:00");
     const now = new Date();
     const diff = targetDate - now;
 
@@ -54,7 +55,7 @@ const TimeCounter = () => {
       ref={sectionRef} 
       className="relative w-full bg-black text-white overflow-hidden z-10"
     >
-      {/* Top Divider Only */}
+      {/* Top Divider */}
       <div className="w-full h-1 bg-gradient-to-r from-red-600 via-purple-500 to-cyan-500" />
 
       {/* Minimal particles */}
@@ -75,9 +76,9 @@ const TimeCounter = () => {
         ))}
       </div>
 
-      {/* FULL WIDTH IMAGE - No border, no outline */}
+      {/* FULL WIDTH IMAGE - Responsive Fix */}
       <motion.div 
-        className="relative w-full"
+        className="relative w-full overflow-hidden"
         initial={{ opacity: 0 }}
         animate={isInView ? { opacity: 1 } : { opacity: 0 }}
         transition={{ duration: 0.6 }}
@@ -85,7 +86,12 @@ const TimeCounter = () => {
         <img
           src={timelineImage}
           alt="Time Counter Banner"
-          className="w-full h-[250px] sm:h-[300px] md:h-[400px] lg:h-[500px] object-cover block"
+          className="w-full h-auto min-h-[200px] max-h-[300px] sm:min-h-[250px] sm:max-h-[400px] md:min-h-[300px] md:max-h-[500px] lg:max-h-[600px] object-cover object-center block"
+          style={{ 
+            border: 'none',
+            outline: 'none',
+            display: 'block'
+          }}
         />
       </motion.div>
 
