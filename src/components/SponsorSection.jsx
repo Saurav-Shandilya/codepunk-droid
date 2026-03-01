@@ -79,19 +79,25 @@ const SponsorSection = () => {
             {/* Contact Info */}
             <div className="flex flex-col md:flex-row justify-center items-center gap-8 pt-6">
 
-              <div className="flex items-center gap-3 bg-black/60 px-6 py-3 rounded-xl border border-red-600/30 hover:border-red-600 transition">
+              <a
+                href="mailto:droidclub@gla.ac.in"
+                className="flex items-center gap-3 bg-black/60 px-6 py-3 rounded-xl border border-red-600/30 hover:border-red-600 transition"
+              >
                 <Mail className="text-red-500" size={20} />
                 <span className="text-gray-200">
-                  yourmail@example.com
+                  droidclub@gla.ac.in
                 </span>
-              </div>
+              </a>
 
-              <div className="flex items-center gap-3 bg-black/60 px-6 py-3 rounded-xl border border-red-600/30 hover:border-red-600 transition">
+              <a
+                href="tel:+917454916178"
+                className="flex items-center gap-3 bg-black/60 px-6 py-3 rounded-xl border border-red-600/30 hover:border-red-600 transition"
+              >
                 <Phone className="text-red-500" size={20} />
                 <span className="text-gray-200">
-                  +91 98765 43210
+                  +91 7454916178
                 </span>
-              </div>
+              </a>
 
             </div>
           </div>

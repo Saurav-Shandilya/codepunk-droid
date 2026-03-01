@@ -1,37 +1,38 @@
 import React, { useRef } from 'react';
 import { motion, useScroll, useTransform, useInView } from 'framer-motion';
-import timelineSvg from "../assets/timeline.svg"; // ✅ ADDED
+import timelineSvg from "../assets/timeline.svg";
+import pig from "../assets/pig.svg";
 
 const timelineData = [
   {
     id: 1,
     title: "1. ORIGINS",
     description: "Where it all began. The spark of an idea that would eventually grow into something extraordinary. Our journey started with a simple vision.",
-    image: "/src/assets/pig.svg"
+    image: pig
   },
   {
     id: 2,
     title: "2. EXPANSION",
     description: "Growth and exploration. We pushed boundaries, reached new horizons, and expanded our capabilities beyond what we thought possible.",
-    image: "/src/assets/pig.svg"
+    image: pig
   },
   {
     id: 3,
     title: "3. INNOVATION",
     description: "Breaking new ground. Through creativity and determination, we developed solutions that changed the way people think about technology.",
-    image: "/src/assets/pig.svg"
+    image: pig
   },
   {
     id: 4,
     title: "4. RECOGNITION",
     description: "Acknowledgment of excellence. Our hard work didn't go unnoticed as we received accolades from industry leaders and peers alike.",
-    image: "/src/assets/pig.svg"
+    image: pig
   },
   {
     id: 5,
     title: "5. GLOBAL IMPACT",
     description: "Making a difference worldwide. Today, our solutions touch millions of lives across the globe, creating positive change every day.",
-    image: "/src/assets/pig.svg"
+    image: pig
   }
 ];
 

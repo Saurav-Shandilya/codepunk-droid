@@ -40,6 +40,8 @@ const fadeLeft = {
   },
 }
 
+const registrationUrl = "https://forms.gle/LjuVyHDqrCkzhMYB6"
+
 const HeroSection = ({ onNav }) => {
   const spiderRef = useRef(null)
 
@@ -101,16 +103,17 @@ const HeroSection = ({ onNav }) => {
             variants={fadeUp}
             className="flex gap-4"
           >
-            <motion.button
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              type="button"
-              onClick={() => onNav && onNav("#cta")}
+              href={registrationUrl}
+              target="_blank"
+              rel="noopener noreferrer"
               className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-full flex items-center gap-2 shadow-lg shadow-red-600/40"
             >
               <Sparkles size={18} />
-              Enter
-            </motion.button>
+              Register
+            </motion.a>
 
             <motion.button
               whileHover={{ scale: 1.05 }}

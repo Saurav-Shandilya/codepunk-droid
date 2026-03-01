@@ -93,8 +93,8 @@ const PrizePool = () => {
           </p>
         </motion.div>
 
-        <div className="max-w-7xl mx-auto px-6 pb-8">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 mb-10 justify-items-center">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 pb-8 ">
+          <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-6 md:gap-8 xl:gap-10 mb-10 justify-items-center">
             {prizes.map((prize, index) => (
               <PrizeCard key={prize.id} prize={prize} index={index} isInView={isInView} />
             ))}
@@ -138,7 +138,7 @@ const PrizePool = () => {
 const PrizeCard = ({ prize, index, isInView }) => {
   return (
     <motion.div 
-      className="relative"
+      className="relative w-full max-w-[380px] sm:max-w-[420px]"
       initial={{ opacity: 0, y: 30 }}
       animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
       transition={{ duration: 0.4, delay: index * 0.08 }}
@@ -153,8 +153,8 @@ const PrizeCard = ({ prize, index, isInView }) => {
         {prize.label}
       </div>
 
-      <div
-        className="relative rounded-2xl overflow-hidden border-4 border-white"
+      <div 
+        className="relative rounded-2xl overflow-hidden border-4 border-white flex flex-col h-full"
         style={{
           background: "linear-gradient(to bottom, #dc2626 0%, #991b1b 50%, #7f1d1d 100%)",
           boxShadow: "8px 8px 0px rgba(0,0,0,0.5)",
@@ -196,12 +196,12 @@ const PrizeCard = ({ prize, index, isInView }) => {
           </div>
 
           <div
-            className="py-5 px-5 text-center text-white font-bold text-sm border-t-4 border-white"
+            className="py-5 px-5 text-center text-white font-bold text-sm border-t-4 border-white min-h-[120px] sm:min-h-[132px] flex items-center justify-center"
             style={{
               background: "linear-gradient(to bottom, #4B1C86, #2B0F54)",
             }}
           >
-            {prize.desc}
+            <span>{prize.desc}</span>
           </div>
         </div>
       </div>

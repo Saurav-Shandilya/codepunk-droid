@@ -11,6 +11,8 @@ const navLinks = [
   { label: 'Contact', href: '#cta' },
 ]
 
+const registrationUrl = 'https://forms.gle/LjuVyHDqrCkzhMYB6'
+
 const NavBar = ({ onNav }) => {
   const [open, setOpen] = useState(false)
 
@@ -55,15 +57,13 @@ const NavBar = ({ onNav }) => {
             </a>
           ))}
           <a
-            href="#cta"
-            onClick={(e) => {
-              e.preventDefault()
-              onNav && onNav("#cta")
-            }}
+            href={registrationUrl}
+            target="_blank"
+            rel="noopener noreferrer"
             className="inline-flex items-center gap-2 rounded-lg px-3 py-2 border border-red-400 hover:border-blue-400 transition-all "
           >
             <Sparkles className="h-4 w-4" />
-            Register
+            Register Me
           </a>
         </nav>
 
@@ -101,16 +101,14 @@ const NavBar = ({ onNav }) => {
                 </a>
               ))}
               <a
-                href="#cta"
-                onClick={(e) => {
-                  e.preventDefault()
-                  onNav && onNav("#cta")
-                  setOpen(false)
-                }}
+                href={registrationUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
                 className="inline-flex items-center justify-center gap-2 rounded-xl "
               >
                 <Sparkles className="h-4 w-4" />
-                Register
+                Register Me
               </a>
             </div>
           </motion.div>
