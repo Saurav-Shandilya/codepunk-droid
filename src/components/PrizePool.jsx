@@ -127,7 +127,7 @@ const PrizePool = () => {
               transition={{ repeat: Infinity, duration: 4, ease: "easeInOut", delay: 1 }}
               className="absolute -bottom-4 -left-6 bg-blue-500 text-white font-bold text-xs md:text-sm py-1 px-3 border-2 border-black shadow-[3px_3px_0px_0px_rgba(0,0,0,1)] -rotate-6"
             >
-              CASH
+              PRIZE
             </motion.div>
           </motion.div>
 
