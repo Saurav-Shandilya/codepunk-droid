@@ -6,7 +6,7 @@ import logo from '../assets/spiderman-logo.jpeg'
 const navLinks = [
   { label: 'Prize Pool', href: '#prizepool' },
   { label: 'Tracks', href: '#tracks' },
-  { label: 'Roadmap', href: '#roadmap' },
+  { label: 'Timeline', href: '#roadmap' },
   { label: 'Sponsors', href: '#sponsors' },
   { label: 'Contact', href: '#cta' },
 ]
