@@ -1,6 +1,6 @@
 import { useRef } from "react"
 import { motion } from "framer-motion"
-import { Sparkles, Rocket } from "lucide-react"
+import { Sparkles, Download } from "lucide-react"
 import spiderman from "../assets/spidy.png"
 import codepunkLogo from "../assets/codepunk.png"
 
@@ -40,7 +40,7 @@ const fadeLeft = {
   },
 }
 
-const registrationUrl = "https://forms.gle/LjuVyHDqrCkzhMYB6"
+const registrationUrl = "https://forms.gle/LjuVyHDqrCkzhMYB6 "
 
 const HeroSection = ({ onNav }) => {
   const spiderRef = useRef(null)
@@ -48,7 +48,7 @@ const HeroSection = ({ onNav }) => {
   return (
     <section
       id="hero"
-      className="relative min-h-screen bg-black overflow-hidden text-white flex items-center justify-center py-20 lg:py-0"
+      className="relative min-h-screen w-full bg-black overflow-hidden text-white flex items-center justify-center py-20 lg:py-0"
     >
       {/* Background Glow */}
       <motion.div
@@ -67,12 +67,12 @@ const HeroSection = ({ onNav }) => {
         variants={container}
         initial="hidden"
         animate="visible"
-        className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 items-center"
+        className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 items-center"
       >
         {/* LEFT CONTENT - Order 2 on mobile, Order 1 on desktop */}
         <motion.div
           variants={fadeRight}
-          className="z-20 space-y-4 sm:space-y-6 order-2 lg:order-1 text-center lg:text-left"
+          className="z-20 space-y-4 sm:space-y-6 order-2 lg:order-1 text-center lg:text-left w-full"
         >
           <motion.h3
             variants={fadeUp}
@@ -99,30 +99,33 @@ const HeroSection = ({ onNav }) => {
 
           <motion.div
             variants={fadeUp}
-            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start"
+            className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full"
           >
+            {/* Register Button - Full width on mobile, auto on desktop */}
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               href={registrationUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-full flex items-center justify-center gap-2 shadow-lg shadow-red-600/40 text-sm sm:text-base"
+              className="bg-red-600 hover:bg-red-700 transition px-6 py-3 rounded-full flex items-center justify-center gap-2 shadow-lg shadow-red-600/40 text-sm sm:text-base w-full sm:w-auto"
             >
               <Sparkles size={18} />
               Register
             </motion.a>
 
-            <motion.button
+            {/* Brochure Button - Full width on mobile, auto on desktop */}
+            <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
-              type="button"
-              onClick={() => onNav && onNav("#roadmap")}
-              className="border border-red-500 px-6 py-3 rounded-full hover:bg-red-600/20 transition flex items-center justify-center gap-2 text-sm sm:text-base"
+              href="https://drive.google.com/file/d/1auZYVkSF_BAH-pyx7nKeFZuhKTDMg8cM/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="border border-red-500 px-6 py-3 rounded-full hover:bg-red-600/20 transition flex items-center justify-center gap-2 text-sm sm:text-base w-full sm:w-auto"
             >
-              <Rocket size={18} />
-              Timeline
-            </motion.button>
+              <Download size={18} />
+              Brochure
+            </motion.a>
           </motion.div>
         </motion.div>
 
@@ -131,9 +134,9 @@ const HeroSection = ({ onNav }) => {
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
           transition={{ duration: 0.9, ease: "easeOut", delay: 0.3 }}
-          className="relative flex items-center justify-center z-10 order-1 lg:order-2 py-8 lg:py-0"
+          className="relative flex items-center justify-center z-10 order-1 lg:order-2 py-8 lg:py-0 w-full"
         >
-          <div className="relative flex items-center justify-center">
+          <div className="relative flex items-center justify-center w-full">
             {/* Logo - Responsive sizing */}
             <img
               src={codepunkLogo}
@@ -154,7 +157,7 @@ const HeroSection = ({ onNav }) => {
         {/* RIGHT CONTENT - Order 3 on all devices */}
         <motion.div
           variants={fadeLeft}
-          className="z-20 space-y-4 sm:space-y-6 order-3 text-center lg:text-right"
+          className="z-20 space-y-4 sm:space-y-6 order-3 text-center lg:text-right w-full"
         >
           <motion.p
             variants={fadeUp}
