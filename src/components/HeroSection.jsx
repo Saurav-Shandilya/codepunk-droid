@@ -171,7 +171,7 @@ const HeroSection = ({ onNav }) => {
             className="text-gray-300 max-w-sm mx-auto lg:ml-auto lg:mr-0 text-sm sm:text-base px-4 lg:px-0"
           >
             Enter the Spider-Tech era.
-            A cinematic hackathon experience powered by bold ideas.
+            A cinematic hackathon experience powered by Droid Club.
           </motion.p>
 
           <motion.div
