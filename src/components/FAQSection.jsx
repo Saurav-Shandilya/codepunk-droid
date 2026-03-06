@@ -12,7 +12,7 @@ const faqs = [
   {
     question: "Is it an online or offline event?",
     answer:
-      "The hackathon will be conducted in hybrid mode — participants can join on-campus or remotely.",
+      "The final round of the hackathon will be conducted in campus - offline mode.",
   },
   {
     question: "What is the duration of the hackathon?",
@@ -22,7 +22,7 @@ const faqs = [
   {
     question: "Do I need a team to participate?",
     answer:
-      "You can register solo or as a team of up to 4 members.",
+      "You can register 2-4 members as a team.",
   },
 ]
 
