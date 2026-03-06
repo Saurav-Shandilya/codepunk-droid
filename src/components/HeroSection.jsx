@@ -176,7 +176,7 @@ const HeroSection = ({ onNav }) => {
             className="inline-block bg-red-600/20 border border-red-500/50 px-4 py-2 rounded-lg"
           >
             <p className="text-red-500 font-bold text-sm sm:text-base">
-              24H • On-Campus + Hybrid
+              24H • On-Campus
             </p>
           </motion.div>
         </motion.div>
