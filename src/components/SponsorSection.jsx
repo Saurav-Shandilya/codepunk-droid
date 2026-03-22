@@ -55,9 +55,11 @@ const SponsorSection = () => {
           >
             Our Sponsors
           </h2>
+
           <p className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
             Partners who power this event and help us build for the future.
           </p>
+
           <div className="w-16 h-[3px] bg-red-500 mx-auto mt-6 rounded-full" />
         </div>
 
@@ -78,7 +80,13 @@ const SponsorSection = () => {
                 variants={float}
                 animate="animate"
                 transition={{ delay: (index % sponsors.length) * 0.08 }}
-                className="group relative flex min-w-[200px] sm:min-w-[220px] max-w-[260px] flex-none items-center justify-center transition hover:-translate-y-1"
+                className="
+                  group relative flex min-w-[200px] sm:min-w-[220px] max-w-[260px] flex-none 
+                  items-center justify-center transition hover:-translate-y-1
+                  bg-white rounded-xl sm:rounded-2xl
+                  px-4 py-3 sm:px-5 sm:py-4
+                  shadow-lg shadow-red-500/10
+                "
               >
                 <img
                   src={sponsor.logo}
@@ -86,7 +94,11 @@ const SponsorSection = () => {
                   loading="lazy"
                   decoding="async"
                   draggable={false}
-                  className="relative mx-auto h-14 sm:h-16 md:h-18 w-full object-contain drop-shadow-[0_6px_20px_rgba(255,75,95,0.28)]"
+                  className="
+                    relative mx-auto h-12 sm:h-14 md:h-16 w-full 
+                    object-contain 
+                    rounded-lg
+                  "
                 />
               </motion.div>
             ))}

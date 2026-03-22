@@ -3,6 +3,7 @@ import { motion } from "framer-motion"
 import { Sparkles, Download } from "lucide-react"
 import spiderman from "../assets/spidy.png"
 import codepunkLogo from "../assets/codepunk.png"
+import unstopLogo from "../assets/sponsers/unstop.png" // ✅ added
 
 const container = {
   hidden: {},
@@ -62,14 +63,14 @@ const HeroSection = ({ onNav }) => {
         }}
       />
 
-      {/* MAIN GRID - Responsive: Stack on mobile, 3-col on desktop */}
+      {/* MAIN GRID */}
       <motion.div
         variants={container}
         initial="hidden"
         animate="visible"
         className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 xl:px-12 grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-4 items-center"
       >
-        {/* LEFT CONTENT - Order 2 on mobile, Order 1 on desktop */}
+        {/* LEFT */}
         <motion.div
           variants={fadeRight}
           className="z-20 space-y-4 sm:space-y-6 order-2 lg:order-1 text-center lg:text-left w-full"
@@ -101,7 +102,6 @@ const HeroSection = ({ onNav }) => {
             variants={fadeUp}
             className="flex flex-col sm:flex-row gap-3 sm:gap-4 justify-center lg:justify-start w-full"
           >
-            {/* Register Button - Full width on mobile, auto on desktop */}
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -114,7 +114,6 @@ const HeroSection = ({ onNav }) => {
               Register
             </motion.a>
 
-            {/* Brochure Button - Full width on mobile, auto on desktop */}
             <motion.a
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -129,7 +128,7 @@ const HeroSection = ({ onNav }) => {
           </motion.div>
         </motion.div>
 
-        {/* CENTER LOGO + SPIDER STACK - Order 1 on mobile, Order 2 on desktop */}
+        {/* CENTER */}
         <motion.div
           initial={{ opacity: 0, scale: 0.95 }}
           animate={{ opacity: 1, scale: 1 }}
@@ -137,14 +136,12 @@ const HeroSection = ({ onNav }) => {
           className="relative flex items-center justify-center z-10 order-1 lg:order-2 py-8 lg:py-0 w-full"
         >
           <div className="relative flex items-center justify-center w-full">
-            {/* Logo - Responsive sizing */}
             <img
               src={codepunkLogo}
               alt="CodePunk 2.0"
               className="absolute -top-8 sm:-top-12 md:-top-16 lg:-top-20 w-[280px] sm:w-[380px] md:w-[450px] lg:w-[520px] xl:w-[600px] max-w-[85vw] drop-shadow-[0_12px_35px_rgba(255,0,0,0.35)] pointer-events-none select-none z-0"
             />
 
-            {/* Spider-Man - Responsive sizing */}
             <img
               ref={spiderRef}
               src={spiderman}
@@ -154,7 +151,7 @@ const HeroSection = ({ onNav }) => {
           </div>
         </motion.div>
 
-        {/* RIGHT CONTENT - Order 3 on all devices */}
+        {/* RIGHT */}
         <motion.div
           variants={fadeLeft}
           className="z-20 space-y-4 sm:space-y-6 order-3 text-center lg:text-right w-full"
@@ -182,10 +179,26 @@ const HeroSection = ({ onNav }) => {
               24H • On-Campus
             </p>
           </motion.div>
+
+          {/* ✅ SPONSOR SECTION */}
+          <motion.div
+            variants={fadeUp}
+            className="mt-6 flex flex-col items-center lg:items-end gap-2"
+          >
+            <p className="text-gray-400 text-xs sm:text-sm uppercase tracking-widest">
+              Powered By
+            </p>
+
+            <img
+              src={unstopLogo}
+              alt="Unstop"
+              className="h-8 sm:h-10 lg:h-12 object-contain opacity-90 hover:opacity-100 transition duration-300"
+            />
+          </motion.div>
         </motion.div>
       </motion.div>
 
-      {/* Mobile Scroll Indicator */}
+      {/* Scroll Indicator */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
