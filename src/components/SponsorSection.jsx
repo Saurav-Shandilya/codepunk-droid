@@ -1,108 +1,97 @@
 import { motion } from "framer-motion"
-import { Mail, Phone } from "lucide-react"
 
-const fadeUp = {
-  hidden: { opacity: 0, y: 40 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: 0.8, ease: "easeOut" },
+const sponsorLogos = {
+  mastra: new URL("../assets/sponsers/Mastra.png", import.meta.url).href,
+  n8n: new URL("../assets/sponsers/n8n.png", import.meta.url).href,
+  codeCrafters: new URL(
+    "../assets/sponsers/CodeCrafters.io full logo (Dark text).png",
+    import.meta.url,
+  ).href,
+  featherless: new URL("../assets/sponsers/featherlessai-transparent.png", import.meta.url).href,
+  interviewCakes: new URL("../assets/sponsers/InterviewCakes.png", import.meta.url).href,
+  stockEdge: new URL("../assets/sponsers/StockEdge.png", import.meta.url).href,
+  osen: new URL("../assets/sponsers/OSEN.jpg", import.meta.url).href,
+  xyz: new URL("../assets/sponsers/.xyz.png", import.meta.url).href,
+}
+
+const sponsors = [
+  { name: "Mastra", logo: sponsorLogos.mastra },
+  { name: "n8n", logo: sponsorLogos.n8n },
+  { name: "CodeCrafters", logo: sponsorLogos.codeCrafters },
+  { name: "StockEdge", logo: sponsorLogos.stockEdge },
+  { name: "Featherless AI", logo: sponsorLogos.featherless },
+  { name: "Interview Cakes", logo: sponsorLogos.interviewCakes },
+  { name: "OSEN", logo: sponsorLogos.osen },
+  { name: "XYZ", logo: sponsorLogos.xyz },
+]
+
+const carouselLogos = [...sponsors, ...sponsors, ...sponsors]
+
+const float = {
+  animate: {
+    y: [0, -8, 0],
+    transition: {
+      duration: 4,
+      repeat: Infinity,
+      ease: "easeInOut",
+    },
   },
 }
 
 const SponsorSection = () => {
   return (
-    <section
-      id="sponsors"
-      className="relative bg-black py-28 text-white overflow-hidden mt-16"
-    >
-      {/* Red Radial Glow Background */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background:
-            "radial-gradient(circle at center, rgba(255,0,0,0.15), transparent 70%)",
-        }}
-      />
+    <section className="relative bg-black py-24 md:py-32 text-white overflow-hidden">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(255,51,102,0.09),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(120,0,32,0.14),transparent_55%)]" />
 
-      <div className="relative max-w-4xl mx-auto px-6">
-
-        {/* Section Heading */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-[64px] font-bold tracking-wide" style={{
-              textShadow: `
-                4px 4px 0px #FF3366,
-                8px 8px 0px #00D9FF,
-                12px 12px 0px #FFE600
-              `,
-              WebkitTextStroke: '2px #000'
-            }} >
-            Become a Sponsor
+      <div className="relative w-full mx-auto px-0">
+        <div className="text-center mb-16">
+          <h2
+            className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight"
+            style={{
+              textShadow: `3px 3px 0px #FF3366, 6px 6px 0px #FF5E3A, 9px 9px 0px #FFB347`,
+              WebkitTextStroke: "1px black",
+            }}
+          >
+            Our Sponsors
           </h2>
-          <div className="w-20 h-[3px] bg-red-600 mx-auto mt-4" />
-        </motion.div>
+          <p className="mt-4 text-base sm:text-lg text-gray-300 max-w-2xl mx-auto">
+            Partners who power this event and help us build for the future.
+          </p>
+          <div className="w-16 h-[3px] bg-red-500 mx-auto mt-6 rounded-full" />
+        </div>
 
-        {/* Spider-Man Themed Sponsor Box */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="relative bg-gradient-to-br from-black via-[#0a0a0a] to-red-950 
-                     border border-red-600/40 
-                     rounded-2xl 
-                     p-10 md:p-14 
-                     shadow-[0_0_40px_rgba(255,0,0,0.25)] 
-                     hover:shadow-[0_0_60px_rgba(255,0,0,0.4)]
-                     transition duration-500"
-        >
-          {/* Web Style Top Border */}
-          <div className="absolute top-0 left-0 w-full h-[2px] bg-gradient-to-r from-transparent via-red-600 to-transparent" />
+        <div className="relative overflow-hidden">
+          <div className="pointer-events-none absolute inset-y-0 left-0 w-16 sm:w-20 bg-gradient-to-r from-black via-black/70 to-transparent" />
+          <div className="pointer-events-none absolute inset-y-0 right-0 w-16 sm:w-20 bg-gradient-to-l from-black via-black/70 to-transparent" />
 
-          <div className="text-center space-y-8">
-            
-            <h3 className="text-2xl md:text-3xl font-semibold tracking-wide text-red-500">
-              Want to Sponsor Us?
-            </h3>
-
-            <p className="text-gray-300 max-w-xl mx-auto">
-              Join hands with us and become part of an innovative, high-impact
-              event. Let’s build something amazing together.
-            </p>
-
-            {/* Contact Info */}
-            <div className="flex flex-col md:flex-row justify-center items-center gap-8 pt-6">
-
-              <a
-                href="mailto:droidclub@gla.ac.in"
-                className="flex items-center gap-3 bg-black/60 px-6 py-3 rounded-xl border border-red-600/30 hover:border-red-600 transition"
+          <motion.div
+            className="flex w-max gap-6 sm:gap-8 md:gap-10 py-6"
+            animate={{ x: ["0%", "-66.666%"] }}
+            transition={{ duration: 22, ease: "linear", repeat: Infinity }}
+            role="list"
+          >
+            {carouselLogos.map((sponsor, index) => (
+              <motion.div
+                role="listitem"
+                key={`${sponsor.name}-${index}`}
+                variants={float}
+                animate="animate"
+                transition={{ delay: (index % sponsors.length) * 0.08 }}
+                className="group relative flex min-w-[200px] sm:min-w-[220px] max-w-[260px] flex-none items-center justify-center transition hover:-translate-y-1"
               >
-                <Mail className="text-red-500" size={20} />
-                <span className="text-gray-200">
-                  droidclub@gla.ac.in
-                </span>
-              </a>
-
-              <a
-                href="tel:+917454916178"
-                className="flex items-center gap-3 bg-black/60 px-6 py-3 rounded-xl border border-red-600/30 hover:border-red-600 transition"
-              >
-                <Phone className="text-red-500" size={20} />
-                <span className="text-gray-200">
-                  +91 7454916178
-                </span>
-              </a>
-
-            </div>
-          </div>
-        </motion.div>
-
+                <img
+                  src={sponsor.logo}
+                  alt={`${sponsor.name} logo`}
+                  loading="lazy"
+                  decoding="async"
+                  draggable={false}
+                  className="relative mx-auto h-14 sm:h-16 md:h-18 w-full object-contain drop-shadow-[0_6px_20px_rgba(255,75,95,0.28)]"
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   )
