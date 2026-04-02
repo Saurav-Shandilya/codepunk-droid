@@ -87,7 +87,7 @@ const timelineData = [
   {
     id: 10,
     date: "2025-03-25T00:00:00",
-    displayDate: "11 april",
+    displayDate: "12 april",
     time: "12:00 AM - 5:00 AM",
     title: "NO SLEEP CHALLENGE",
     description: "The ultimate test of endurance. Keep hacking through the night!",
@@ -96,7 +96,7 @@ const timelineData = [
   {
     id: 11,
     date: "2025-03-25T09:30:00",
-    displayDate: "11 april",
+    displayDate: "12 april",
     time: "9:30 AM - 10:30 AM",
     title: "JUDGING (ROUND 2)",
     description: "Second round of evaluation. Present your progress to the judges.",
@@ -105,7 +105,7 @@ const timelineData = [
   {
     id: 12,
     date: "2025-03-25T10:30:00",
-    displayDate: "11 april",
+    displayDate: "12 april",
     time: "10:30 AM - 11:00 AM",
     title: "BREAK AND PPT PREPARATION",
     description: "Short break and time for final PPT preparation for the finalists.",
@@ -114,7 +114,7 @@ const timelineData = [
   {
     id: 13,
     date: "2025-03-25T11:00:00",
-    displayDate: "11 april",
+    displayDate: "12 april",
     time: "11:00 AM - 12:00 PM",
     title: "FINAL JUDGING",
     description: "Final presentations. Showcase your complete solution to the panel of expert judges.",
