@@ -22,7 +22,7 @@ const TimeCounter = () => {
     const now = new Date();
 
     // Hackathon Start Date → 9 April 2026, 10:30 AM
-    const targetDate = new Date(2026, 3, 9, 10, 30, 0); // April = 3
+    const targetDate = new Date(2026, 3, 10, 10, 30, 0); // April = 3
 
     const diff = targetDate - now;
 
