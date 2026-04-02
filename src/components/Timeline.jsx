@@ -24,7 +24,7 @@ const timelineData = [
   {
     id: 3,
     date: "2025-03-24T10:30:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "10:30 AM - 11:00 AM",
     title: "REGISTRATION",
     description: "On-site check-in. Verify your credentials, collect your swag bags, and get ready for the event.",
@@ -33,7 +33,7 @@ const timelineData = [
   {
     id: 4,
     date: "2025-03-24T11:00:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "11:00 AM - 11:30 AM",
     title: "INAUGURATION",
     description: "Opening ceremony. Welcome address by dignitaries and introduction to the hackathon theme.",
@@ -42,7 +42,7 @@ const timelineData = [
   {
     id: 5,
     date: "2025-03-24T11:30:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "11:30 AM - 12:00 PM",
     title: "INTRODUCTION AND RULES DESCRIPTION",
     description: "Detailed briefing on evaluation criteria, code of conduct, and resource allocation.",
@@ -51,7 +51,7 @@ const timelineData = [
   {
     id: 6,
     date: "2025-03-24T12:00:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "12:00 NOON",
     title: "EVENT START",
     description: "Hackathon begins! The clock starts ticking. Start brainstorming and coding your solutions.",
@@ -60,7 +60,7 @@ const timelineData = [
   {
     id: 7,
     date: "2025-03-24T16:00:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "4:00 PM - 5:00 PM",
     title: "JUDGING 1 (MENTORING ROUND)",
     description: "First round of evaluation with mentoring feedback. Get guidance from industry experts.",
@@ -69,7 +69,7 @@ const timelineData = [
   {
     id: 8,
     date: "2025-03-24T20:00:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "8:00 PM - 9:00 PM",
     title: "DINNER BREAK",
     description: "Take a break, recharge with dinner, and network with fellow participants.",
@@ -78,7 +78,7 @@ const timelineData = [
   {
     id: 9,
     date: "2025-03-24T21:30:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "9:30 PM - 10:00 PM",
     title: "HACK CONTINUES",
     description: "Back to hacking! Continue building your project with renewed energy.",
@@ -87,7 +87,7 @@ const timelineData = [
   {
     id: 10,
     date: "2025-03-25T00:00:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "12:00 AM - 5:00 AM",
     title: "NO SLEEP CHALLENGE",
     description: "The ultimate test of endurance. Keep hacking through the night!",
@@ -96,7 +96,7 @@ const timelineData = [
   {
     id: 11,
     date: "2025-03-25T09:30:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "9:30 AM - 10:30 AM",
     title: "JUDGING (ROUND 2)",
     description: "Second round of evaluation. Present your progress to the judges.",
@@ -105,7 +105,7 @@ const timelineData = [
   {
     id: 12,
     date: "2025-03-25T10:30:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "10:30 AM - 11:00 AM",
     title: "BREAK AND PPT PREPARATION",
     description: "Short break and time for final PPT preparation for the finalists.",
@@ -114,7 +114,7 @@ const timelineData = [
   {
     id: 13,
     date: "2025-03-25T11:00:00",
-    displayDate: "09 april",
+    displayDate: "11 april",
     time: "11:00 AM - 12:00 PM",
     title: "FINAL JUDGING",
     description: "Final presentations. Showcase your complete solution to the panel of expert judges.",
@@ -123,7 +123,7 @@ const timelineData = [
   {
     id: 14,
     date: "2025-03-25T13:00:00",
-    displayDate: "10 april",
+    displayDate: "12 april",
     time: "1:00 PM",
     title: "PRIZE DISTRIBUTION",
     description: "Winners announcement and prize distribution ceremony. Celebrate the victory!",
