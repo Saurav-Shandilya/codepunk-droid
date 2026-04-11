@@ -121,7 +121,7 @@ const TimeCounter = () => {
               WebkitTextStroke: '2px #000'
             }}
           >
-            HACK STARTS IN
+            HACK Ends IN
           </h2>
         </motion.div>
 
